@@ -1,0 +1,12 @@
+*.iml
+*.iws
+*.ipr
+
+.idea/
+.tmp/
+node_modules/
+vendor/
+reports/
+dist/
+
+.sass-cache/
