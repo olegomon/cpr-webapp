@@ -1,9 +1,20 @@
 angular.module('cpr', [
+
+    'ui.bootstrap',
+    'ui.bootstrap.showErrors',
+    'ui.route',
+    'ui.router',
+
     'app.templates',
-    'cpr.engine'
+    'cpr.navigation',
+    'cpr.profile',
+    'cpr.engine',
+    'cpr.game',
+    'cpr.about'
 ])
 
-    .controller('AppCtrl', function($scope) {
-        $scope.title = 'Scissors Paper Rock Lizard Spock';
+    .config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/about');
     })
+
 ;
