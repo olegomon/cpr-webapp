@@ -1,7 +1,7 @@
 angular.module('cpr.profile.controllers', [
     'ui.router'
 ])
-    .controller('ProfileCtrl', function($scope, $state) {
+    .controller('ProfileCtrl', function($scope, $state, UserService) {
         $scope.user = {
             name: "",
             email: ""
@@ -10,7 +10,10 @@ angular.module('cpr.profile.controllers', [
         $scope.save = function() {
             $scope.$broadcast('show-errors-check-validity');
             if ($scope.userForm.$valid) {
-                $state.go('game');
+                UserService.saveUser($scope.user).then(function() {
+                    $state.go('game');
+                });
+                // TODO handle save error
             }
         };
     })

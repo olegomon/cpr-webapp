@@ -7,11 +7,26 @@ describe('Profile Controllers', function () {
     describe('ProfileCtrl', function () {
 
         var $state;
+        var $q;
+        var saveUserDfd;
 
-        beforeEach(inject(function($controller, $rootScope, _$state_) {
+        beforeEach(module(function ($provide) {
+
+            var UserServiceMock = {};
+
+            UserServiceMock.saveUser = jasmine.createSpy().andCallFake(function () {
+                saveUserDfd = $q.defer();
+                return saveUserDfd.promise;
+            });
+
+            $provide.value('UserService', UserServiceMock);
+        }));
+
+        beforeEach(inject(function($controller, $rootScope, _$state_, _$q_) {
             $scope = $rootScope.$new();
             $controller('ProfileCtrl', {$scope: $scope});
             $state = _$state_;
+            $q = _$q_;
         }));
 
         it('should init name attribute', function() {
@@ -39,6 +54,10 @@ describe('Profile Controllers', function () {
             $scope.userForm.$valid = true;
             spyOn($state, 'go');
             $scope.save();
+
+            // digest the deferred service invocation
+            saveUserDfd.resolve();
+            $scope.$apply();
             expect($state.go).toHaveBeenCalledWith('game');
         });
 
