@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6">
+            <h1>Profile</h1>
+            <form name="userForm" novalidate>
+                <div class="form-group" show-errors>
+                    <label for="name">Nickname</label>
+                    <input id="name"
+                           name="name"
+                           type="text"
+                           class="form-control"
+                           placeholder="Your nickname"
+                           required
+                           ng-model="user.name">
+
+                </div>
+                <div class="form-group" show-errors>
+
+                    <label for="email">Email address</label>
+                    <input id="email"
+                           type="email"
+                           name="email"
+                           class="form-control"
+                           placeholder="gravatar@image.com"
+                           required
+                           ng-model="user.email">
+                </div>
+                <a href="" ng-click="save()" class="btn btn-primary">Let's play</a>
+            </form>
+        </div>
+    </div>
+</div>
+
