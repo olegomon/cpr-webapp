@@ -50,6 +50,8 @@ module.exports.config = {
         vendor: {
             js: [
                 'vendor/angular/angular.js',
+                'vendor/angular-bootstrap/ui-bootstrap.js',
+                'vendor/angular-bootstrap-show-errors/src/showErrors.js',
                 'vendor/angular-ui-router/release/angular-ui-router.js',
                 'vendor/angular-ui-utils/ui-utils.js'
             ],
