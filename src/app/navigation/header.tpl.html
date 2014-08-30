@@ -1,0 +1,23 @@
+<nav class="navbar navbar-inverse navbar-fixed-top"
+     role="navigation"
+     ng-controller="NavCtrl"
+        >
+    <div class="container-fluid">
+
+        <div class="navbar-header">
+            <a href="" class="navbar-toggle drawer-button"
+               ng-click="toggleNavbar()">
+                <i class="fa fa-bars"></i>
+            </a>
+            <a class="navbar-brand" ui-sref="about">{{title}}</a>
+        </div>
+
+        <div collapse="navbarCollapsed" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-repeat="item in menuItems" ui-sref-active="active">
+                    <a ng-click="closeNavbar()" ui-sref="{{ item.state }}">{{ item.name }}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
