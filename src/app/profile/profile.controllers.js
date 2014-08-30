@@ -1,11 +1,17 @@
 angular.module('cpr.profile.controllers', [
     'ui.router'
 ])
-    .controller('ProfileCtrl', function($scope, $state, UserService) {
-        $scope.user = {
-            name: "",
-            email: ""
-        };
+    .controller('ProfileCtrl', function($scope, $state, user, UserService) {
+
+        if(user) {
+            $scope.user = user;
+        } else {
+            $scope.user = {
+                name: "",
+                email: ""
+            };
+        }
+
 
         $scope.save = function() {
             $scope.$broadcast('show-errors-check-validity');

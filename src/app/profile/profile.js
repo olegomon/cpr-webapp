@@ -8,7 +8,12 @@ angular.module('cpr.profile', [
             .state('profile', {
                 url        : '/profile',
                 templateUrl: 'profile/profile.tpl.html',
-                controller : 'ProfileCtrl'
+                controller : 'ProfileCtrl',
+                resolve: {
+                    user: function(UserService) {
+                        return UserService.loadUser();
+                    }
+                }
             })
         ;
     })
