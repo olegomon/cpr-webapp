@@ -1,0 +1,23 @@
+.game {
+
+    text-align: center;
+  .game-score {
+    background-color: darkgray;
+  }
+
+  .game-field {
+
+    $field-border: 1px solid #000000;
+
+    &:first-child {
+      border-right: $field-border;
+    }
+
+    @media (max-width: '768px'){
+      &:first-child {
+        border-right: none;
+        border-bottom: $field-border;
+      }
+    }
+  }
+}

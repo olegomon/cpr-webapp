@@ -1,6 +1,8 @@
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 @import "font-awesome/scss/font-awesome.scss";
 
+@import "game";
+
 // fix for fixed nav bar
 body {
   padding-top: 50px;
