@@ -74,6 +74,15 @@ describe('Scissors, Paper, Rock, Lizard, Spock', function () {
             expect(RulesService.getPayoff(GESTURES.SCISSORS, GESTURES.SPOCK)).toEqual(player2);
         });
 
+        it('isValidGesture should return true if passed gesture is valid', function () {
+            expect(RulesService.isValidGesture(0));
+            expect(RulesService.isValidGesture(1));
+            expect(RulesService.isValidGesture(2));
+            expect(RulesService.isValidGesture(3));
+            expect(RulesService.isValidGesture(4));
+            expect(RulesService.isValidGesture(5));
+        });
+
         it('should throw an exception if passed gesture is not valid', function () {
 
             expect(function() {

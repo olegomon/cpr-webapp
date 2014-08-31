@@ -4,13 +4,14 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div>{{player1.name}}</div>
-                    <div>Is ready: {{player1.ready}}</div>
+                    <div>Is ready: {{isReady(player1)}}</div>
                     <div>Score: {{score.home}}</div>
+
+                    <a href="" class="btn btn-primary" ng-click="play()">Play</a>
+
                 </div>
                 <div class="col-sm-12">
-
-                    <h2>game field Player 1</h2>
-
+                    <gesture-picker gesture="player1.gesture" state="state"></gesture-picker>
                 </div>
             </div>
         </div>
@@ -18,13 +19,11 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div>{{player2.name}}</div>
-                    <div>Is ready: {{player2.ready}}</div>
-                    <div>Score: {{score.home}}</div>
+                    <div>Is ready: {{isReady(player2)}}</div>
+                    <div>Score: {{score.away}}</div>
                 </div>
                 <div class="col-sm-12">
-
-                    <h2>game field player 2</h2>
-
+                    <gesture-picker gesture="player2.gesture" state="state"></gesture-picker>
                 </div>
             </div>
         </div>

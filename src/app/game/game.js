@@ -4,7 +4,8 @@ angular.module('cpr.game', [
     'cpr.profile',
 
     'cpr.game.services',
-    'cpr.game.controllers'
+    'cpr.game.controllers',
+    'cpr.game.directives'
 ])
     .config(function ($stateProvider) {
         $stateProvider
