@@ -3,6 +3,7 @@ angular.module('cpr.game', [
     'cpr.engine',
     'cpr.profile',
 
+    'cpr.game.filters',
     'cpr.game.services',
     'cpr.game.controllers',
     'cpr.game.directives'
