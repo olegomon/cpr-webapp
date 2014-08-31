@@ -1,6 +1,13 @@
 angular.module('cpr.game.filters', [
     'cpr.engine.constants'
 ])
+
+    .filter('gestureIcon', function(gestureFilter) {
+        return function(input) {
+            return gestureFilter(input).toLowerCase() + '.svg';
+        };
+    })
+
     .filter('gesture', function () {
 
         return function (gesture) {

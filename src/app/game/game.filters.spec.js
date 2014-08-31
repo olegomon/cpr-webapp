@@ -18,4 +18,14 @@ describe('Game Filters', function () {
         }));
     });
 
+    describe('gesture icon filter', function () {
+
+        it('should return correct file name for a gesture', inject(function (gestureIconFilter, GESTURES) {
+            expect(gestureIconFilter(GESTURES.SCISSORS)).toEqual('scissors.svg');
+            expect(gestureIconFilter(GESTURES.ROCK)).toEqual('rock.svg');
+            expect(gestureIconFilter(GESTURES.PAPER)).toEqual('paper.svg');
+            expect(gestureIconFilter(GESTURES.LIZARD)).toEqual('lizard.svg');
+            expect(gestureIconFilter(GESTURES.SPOCK)).toEqual('spock.svg');
+        }));
+    });
 });

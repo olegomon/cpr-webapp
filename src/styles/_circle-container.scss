@@ -1,0 +1,63 @@
+.circle-container {
+
+  $size: 18em;
+  $half-size: $size / 3;
+
+  @include box-sizing(content-box);
+
+  position: relative;
+  width: $size;
+  height: $size;
+  padding: 1em;
+  @include border-radius(50%, 50%);
+  margin: auto;
+
+  .center {
+
+  }
+
+  a, .center {
+    $width: 5em;
+
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: $width;
+    height: $width;
+    margin: -$width / 2;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+  }
+
+  $shift: 90deg;
+  $slice: 360deg / 5;
+
+  .element-0 {
+    $angle: $shift;
+    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+  }
+
+  .element-1 {
+    $angle: $slice * 1 + $shift;
+    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+  }
+
+  .element-2 {
+    $angle: $slice * 2 + $shift;
+    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+  }
+
+  .element-3 {
+    $angle: $slice * 3 + $shift;
+    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+  }
+
+  .element-4 {
+    $angle: $slice * 4 + $shift;
+    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+  }
+}

@@ -8,7 +8,8 @@
     "font-awesome": "~4.2.0",
     "angular-ui-utils": "~0.1.1",
     "angular-ui-router": "~0.2.11",
-    "angular-bootstrap-show-errors": "~1.0.4"
+    "angular-bootstrap-show-errors": "~1.0.4",
+    "angular-touch": "~1.2.23"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.23"

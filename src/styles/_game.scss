@@ -1,5 +1,4 @@
 .game {
-
     text-align: center;
   .game-score {
     background-color: darkgray;
@@ -7,7 +6,7 @@
 
   .game-field {
 
-    $field-border: 1px solid #000000;
+    $field-border: 1px solid #bababa;
 
     &:first-child {
       border-right: $field-border;
@@ -18,6 +17,17 @@
         border-right: none;
         border-bottom: $field-border;
       }
+    }
+  }
+
+  .gesture-icon {
+
+    @include transition-duration(.1s);
+    @include transition-timing-function(ease-in);
+    @include transition-property("transform");
+
+    &:hover {
+      @include transform(scale(1.2, 1.2));
     }
   }
 }

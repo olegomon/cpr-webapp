@@ -1,7 +1,7 @@
 angular.module('cpr.navigation.controllers', [
 ])
     .controller('NavCtrl', function($scope) {
-        $scope.title = 'Scissors Paper Rock Lizard Spock';
+        $scope.title = 'SPR - Lizard Spock';
 
         $scope.navbarCollapsed = true;
 

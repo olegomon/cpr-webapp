@@ -1,5 +1,7 @@
 angular.module('cpr', [
 
+    'ngTouch',
+
     'ui.bootstrap',
     'ui.bootstrap.showErrors',
     'ui.route',
