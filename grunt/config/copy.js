@@ -14,6 +14,13 @@ module.exports = {
                 src    : [ '<%= config.files.vendor.font %>' ],
                 dest   : '<%= config.dir.temp %>/fonts/'
             },
+            {
+                // assets
+                cwd   : '<%= config.dir.app %>',
+                expand : true,
+                src    : [ 'assets/images/**' ],
+                dest   : '<%= config.dir.temp %>'
+            }
         ]
     },
 
@@ -28,13 +35,10 @@ module.exports = {
             },
             {
 
-                cwd   : '<%= config.dir.temp %>',
+                cwd   : '<%= config.dir.app %>',
                 expand: true,
-                src   : [
-                    // '<%= merge.translations.dest %>'
-                    'assets/translations/**/*.json'
-                ],
-                dest  : '<%= config.dir.dist %>'
+                src    : [ 'assets/images/**' ],
+                dest  : '<%= config.dir.dist %>/'
             }
         ]
     }
