@@ -4,12 +4,35 @@ angular.module('cpr.game.directives', [
     .directive('gesturePicker', function () {
         return {
             restrict: 'E',
-            scope   : {
+            scope: {
                 gesture: '=',
                 state  : '='
             },
 
             templateUrl: 'game/gesture-picker.tpl.html',
+
+            controller: function ($scope, GESTURES) {
+                $scope.pick = function (gesture) {
+                    $scope.gesture = gesture;
+                };
+
+                $scope.gestures = Object.keys(GESTURES).map(function (key) {
+                    return GESTURES[key];
+                });
+            }
+        };
+    })
+
+    .directive('autoGesturePicker', function () {
+        return {
+            restrict: 'E',
+
+            scope: {
+                gesture: '=',
+                state  : '='
+            },
+
+            templateUrl: 'game/auto-gesture-picker.tpl.html',
 
             controller: function ($scope, $interval) {
 

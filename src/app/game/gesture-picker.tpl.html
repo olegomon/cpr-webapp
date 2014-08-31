@@ -1,4 +1,5 @@
+Your choice: {{gesture | gesture}}
 <h1>Gestures</h1>
-<div>Gesture: {{gesture | gesture}}</div>
-<div>State: {{state}}</div>
-<div>Mask: {{mask | gesture}}</div>
+<div ng-repeat="gesture in gestures">
+    <a href="" ng-click="pick(gesture)">{{gesture | gesture}}</a>
+</div>

@@ -5,9 +5,12 @@ angular.module('cpr.game.controllers', [
     .controller('GameCtrl', function ($scope, $log, RulesService) {
 
         $scope.state = null;
+        $scope.round = {
+            winner: null
+        };
 
         $scope.player1 = {
-            name   : "Player1",
+            name   : 'Player1',
             gesture: null,
             ready  : false
         };
@@ -27,6 +30,7 @@ angular.module('cpr.game.controllers', [
             $scope.player1.gesture = null;
             $scope.player2.gesture = null;
             $scope.state = 'play';
+            $scope.round.winner = null;
         };
 
         $scope.reveal = function () {
@@ -37,8 +41,20 @@ angular.module('cpr.game.controllers', [
             return $scope.state === 'play';
         };
 
-        function updateScore() {
-            var payoff = RulesService.getPayoff($scope.player1.gesture, $scope.player2.gesture);
+        function updateRound(payoff) {
+            if(payoff.player1) {
+                $scope.round.winner = $scope.player1.name;
+            }
+            if(payoff.player2) {
+                $scope.round.winner = $scope.player2.name;
+            }
+            if(payoff.draw) {
+                $scope.round.winner = 'DRAW';
+            }
+
+        }
+
+        function updateScore(payoff) {
             if (payoff.player1) {
                 $scope.score.home += 1;
             }
@@ -53,7 +69,10 @@ angular.module('cpr.game.controllers', [
 
         function onReady() {
             if ($scope.isReady($scope.player1) && $scope.isReady($scope.player2) && $scope.isPlaying()) {
-                updateScore();
+
+                var payoff = RulesService.getPayoff($scope.player1.gesture, $scope.player2.gesture);
+                updateScore(payoff);
+                updateRound(payoff);
                 $scope.reveal();
             }
         }

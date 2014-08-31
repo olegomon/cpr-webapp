@@ -45,6 +45,7 @@ describe('Game Controllers', function () {
             $scope.play();
 
             expect($scope.state).toBe('play');
+            expect($scope.round.winner).toBe(null);
             expect($scope.player1.gesture).toBe(null);
             expect($scope.player2.gesture).toBe(null);
         });
@@ -79,7 +80,7 @@ describe('Game Controllers', function () {
             expect($scope.state).toEqual('reveal');
         });
 
-        it('should update the score according to the gestures of the players', function() {
+        it('should update the score and winner according to the gestures of the players', function() {
 
             expect($scope.score.home).toBe(0);
             expect($scope.score.away).toBe(0);
@@ -95,8 +96,35 @@ describe('Game Controllers', function () {
             // digest to trigger watch listeners
             $scope.$apply();
 
+            expect($scope.round.winner).toEqual($scope.player1.name);
             expect($scope.score.home).toBe(1);
             expect($scope.score.away).toBe(0);
+
+            // start game
+            $scope.play();
+
+            // player 2 must win
+            $scope.player1.gesture = GESTURES.ROCK;
+            $scope.player2.gesture = GESTURES.PAPER;
+
+            $scope.$apply();
+
+            expect($scope.round.winner).toEqual($scope.player2.name);
+            expect($scope.score.home).toBe(1);
+            expect($scope.score.away).toBe(1);
+
+            // start game
+            $scope.play();
+
+            // DRAW
+            $scope.player1.gesture = GESTURES.ROCK;
+            $scope.player2.gesture = GESTURES.ROCK;
+
+            $scope.$apply();
+
+            expect($scope.round.winner).toEqual('DRAW');
+            expect($scope.score.home).toBe(1);
+            expect($scope.score.away).toBe(1);
         });
     });
 

@@ -13,7 +13,7 @@ describe('Game Filters', function () {
             expect(gestureFilter(GESTURES.SPOCK)).toEqual('Spock');
         }));
 
-        it('should return empty string for a invalid gesture', inject(function (gestureFilter, GESTURES) {
+        it('should return empty string for a invalid gesture', inject(function (gestureFilter) {
             expect(gestureFilter(-1)).toEqual('');
         }));
     });
