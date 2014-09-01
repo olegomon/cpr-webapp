@@ -36,28 +36,32 @@
   $shift: 90deg;
   $slice: 360deg / 5;
 
-  .element-0 {
+  @mixin circle-element($translate, $angle) {
+    @include transform(rotate($angle) translate($translate) rotate(-$angle));
+  }
+
+  a:nth-child(1) {
     $angle: $shift;
-    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+    @include circle-element($half-size, $angle);
   }
 
-  .element-1 {
+  a:nth-child(2) {
     $angle: $slice * 1 + $shift;
-    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+    @include circle-element($half-size, $angle);
   }
 
-  .element-2 {
+  a:nth-child(3) {
     $angle: $slice * 2 + $shift;
-    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+    @include circle-element($half-size, $angle);
   }
 
-  .element-3 {
+  a:nth-child(4) {
     $angle: $slice * 3 + $shift;
-    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+    @include circle-element($half-size, $angle);
   }
 
-  .element-4 {
+  a:nth-child(5) {
     $angle: $slice * 4 + $shift;
-    @include transform(rotate($angle) translate($half-size) rotate(-$angle));
+    @include circle-element($half-size, $angle);
   }
 }
