@@ -1,6 +1,17 @@
 angular.module('cpr.game.directives', [
 ])
 
+    .directive('circleLayout', function() {
+        return {
+            restrict   : 'E',
+            transclude : true,
+            scope      : {
+                centerIcon: '='
+            },
+            templateUrl: 'game/circle-layout.tpl.html'
+        };
+    })
+
     .directive('gesturePicker', function () {
         return {
             restrict: 'E',
@@ -12,7 +23,6 @@ angular.module('cpr.game.directives', [
             templateUrl: 'game/gesture-picker.tpl.html',
 
             controller: function ($scope, RulesService) {
-                $scope.center = 'user';
                 $scope.pick = function (gesture) {
                     $scope.gesture = gesture;
                 };
@@ -38,8 +48,6 @@ angular.module('cpr.game.directives', [
 
                 var min = 0;
                 var max = $scope.gestures.length;
-
-                $scope.center = 'laptop';
 
                 $scope.mask = "";
 

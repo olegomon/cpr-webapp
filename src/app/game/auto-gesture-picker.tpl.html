@@ -1,10 +1,7 @@
-<div class='circle-container'>
-    <div class='center'>
-        <i class="fa fa-4x fa-{{center}}"></i>
-    </div>
+<circle-layout center-icon="'laptop'">
     <a ng-repeat="gesture in gestures" class="element-{{$index}}">
         <img ng-src="assets/images/{{gesture | gestureIcon}}"
              ng-class="{'gesture-no-mask' : mask !== gesture, 'gesture-mask' : mask === gesture}"
              class="gesture-icon"/>
     </a>
-</div>
+</circle-layout>
