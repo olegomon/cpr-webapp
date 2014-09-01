@@ -50,6 +50,12 @@ describe('Game Controllers', function () {
             expect($scope.player2.gesture).toBe(null);
         });
 
+        it('close() should reset the winner field', function() {
+            $scope.round.winner = 'Player 1';
+            $scope.close();
+            expect($scope.round.winner).toBe(null);
+        });
+
         it('valid changes on gestures should update the state', function() {
 
             spyOn($scope, 'reveal').andCallThrough();

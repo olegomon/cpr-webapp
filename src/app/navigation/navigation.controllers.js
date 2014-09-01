@@ -16,6 +16,7 @@ angular.module('cpr.navigation.controllers', [
         $scope.menuItems = [
             { state: 'profile', name: 'Profile' },
             { state: 'game', name: 'Play' },
+            { state: 'demo', name: 'Demo' },
             { state: 'about', name: 'About' }
         ];
     })

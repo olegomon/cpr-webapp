@@ -1,6 +1,6 @@
 angular.module('cpr.engine.services', [
 ])
-    .factory('RulesService', function() {
+    .factory('RulesService', function(GESTURES) {
 
         /**
          * The normal form matrix of rock-paper-scissors-lizard-Spock.
@@ -50,7 +50,18 @@ angular.module('cpr.engine.services', [
             return result;
         }
 
+        function getGestures() {
+            return Object.keys(GESTURES).map(function (key) {
+                return GESTURES[key];
+            });
+        }
+
         return {
+            /**
+             * Returns a array of gesture numbers
+             * @returns {Array}
+             */
+            getGestures: getGestures,
 
             /**
              * Returns true if passed gesture is a number and valid

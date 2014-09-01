@@ -7,14 +7,20 @@ describe('Scissors, Paper, Rock, Lizard, Spock', function () {
         var RulesService;
         var GESTURES;
 
-        var draw =    { draw: true,  player1: false, player2: false };
-        var player1 = { draw: false, player1: true,  player2: false };
+        var draw = { draw: true, player1: false, player2: false };
+        var player1 = { draw: false, player1: true, player2: false };
         var player2 = { draw: false, player1: false, player2: true };
 
         beforeEach(inject(function (_RulesService_, _GESTURES_) {
             RulesService = _RulesService_;
             GESTURES = _GESTURES_;
         }));
+
+
+        it('getGestures should return an array of gestures', function () {
+            expect(RulesService.getGestures().length).toEqual(5);
+            expect(RulesService.getGestures()).toEqual([0, 1, 2, 3, 4]);
+        });
 
         it('getPayoff should return "DRAW" if both players picked the same gesture', function () {
             expect(RulesService.getPayoff(GESTURES.SCISSORS, GESTURES.SCISSORS)).toEqual(draw);
@@ -85,27 +91,27 @@ describe('Scissors, Paper, Rock, Lizard, Spock', function () {
 
         it('should throw an exception if passed gesture is not valid', function () {
 
-            expect(function() {
+            expect(function () {
                 RulesService.getPayoff(-1, GESTURES.SPOCK);
             }).toThrow();
 
-            expect(function() {
+            expect(function () {
                 RulesService.getPayoff(5, GESTURES.SPOCK);
             }).toThrow();
 
-            expect(function() {
+            expect(function () {
                 RulesService.getPayoff(GESTURES.SPOCK, -1);
             }).toThrow();
 
-            expect(function() {
+            expect(function () {
                 RulesService.getPayoff(GESTURES.SPOCK, 5);
             }).toThrow();
 
-            expect(function() {
+            expect(function () {
                 RulesService.getPayoff("", GESTURES.SPOCK);
             }).toThrow();
 
-            expect(function() {
+            expect(function () {
                 RulesService.getPayoff(GESTURES.SPOCK, "");
             }).toThrow();
         });

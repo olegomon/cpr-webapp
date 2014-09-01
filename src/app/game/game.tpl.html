@@ -1,42 +1,17 @@
-<div class="container-fluid game">
-    <div class="row">
-        <div class="col-sm-12">
-            {{round.winner}}
+<div class="container game">
+    <div ng-click="close()" class="game-overlay" ng-show="round.winner">
+        <div class="game-banner animated" ng-class="{'tada': round.winner}" >
+            <h3>And the winner is: {{round.winner}}</h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6 game-field">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div>{{player1.name}}</div>
-                    <div>Is ready: {{isReady(player1)}}</div>
-                    <div>Score: {{score.home}}</div>
-                </div>
-                <div class="col-sm-12">
-                    <gesture-picker gesture="player1.gesture" state="state"></gesture-picker>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-sm-6 game-field">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div>{{player2.name}}</div>
-                    <div>Is ready: {{isReady(player2)}}</div>
-                    <div>Score: {{score.away}}</div>
-                </div>
-                <div class="col-sm-12">
-
-                    <auto-gesture-picker gesture="player2.gesture" state="state"></auto-gesture-picker>
-
-                </div>
-            </div>
-        </div>
+    <div class="col-sm-6 game-field">
+        <gesture-picker gesture="player1.gesture" state="state"></gesture-picker>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <a href="" class="btn btn-primary" ng-click="play()">Play</a>
-        </div>
+    <div class="col-sm-6 game-field">
+        <auto-gesture-picker gesture="player2.gesture" state="state"></auto-gesture-picker>
+    </div>
+    <div class="col-sm-12">
+        <a href="" class="btn btn-primary" ng-click="play()">Play</a>
     </div>
 </div>
 

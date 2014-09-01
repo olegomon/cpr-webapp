@@ -12,7 +12,7 @@ describe('Navigation Controllers', function () {
         }));
 
         it('should set the title on the scope', function() {
-            expect($scope.title).toEqual('Scissors Paper Rock Lizard Spock');
+            expect($scope.title).toEqual('SPR - Lizard Spock');
         });
 
         it('toggleNavbar should change the navbar collapse state', function() {

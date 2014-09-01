@@ -1,5 +1,29 @@
 .game {
-    text-align: center;
+
+  position: relative;
+
+  padding: 0;
+
+  .game-overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    @include display-flex;
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    @include align-content(stretch);
+
+    z-index: 100;
+    opacity: .8;
+    background-color: white;
+    .game-banner {
+      opacity: 1;
+    }
+  }
+
+  text-align: center;
   .game-score {
     background-color: darkgray;
   }
@@ -12,7 +36,7 @@
       border-right: $field-border;
     }
 
-    @media (max-width: '768px'){
+    @media (max-width: '768px') {
       &:first-child {
         border-right: none;
         border-bottom: $field-border;
@@ -20,14 +44,23 @@
     }
   }
 
-  .gesture-icon {
-
-    @include transition-duration(.1s);
+  @mixin gesture-pop() {
+    @include transition-duration(.2s);
     @include transition-timing-function(ease-in);
-    @include transition-property("transform");
+    @include transition-property(transform);
 
-    &:hover {
-      @include transform(scale(1.2, 1.2));
-    }
+    $scale-factor: 1.2;
+    @include transform(scale(1.2, 1.2));
+  }
+
+  .gesture-mask {
+    @include gesture-pop();
+  }
+
+  .gesture-no-mask {
+    @include filter(grayscale(100%));
+  }
+
+  .gesture-icon {
   }
 }

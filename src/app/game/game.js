@@ -23,4 +23,19 @@ angular.module('cpr.game', [
         ;
     })
 
+    .config(function ($stateProvider) {
+        $stateProvider
+            .state('demo', {
+                url        : '/demo',
+                templateUrl: 'game/demo.tpl.html',
+                controller: 'GameCtrl',
+                resolve: {
+                    user: function() {
+                        return {};
+                    }
+                }
+            })
+        ;
+    })
+
 ;
