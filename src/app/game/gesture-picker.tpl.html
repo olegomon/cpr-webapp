@@ -1,9 +1,8 @@
 <circle-layout center-icon="'user'">
-    <a ng-click="pick(g)" ng-repeat="g in gestures" class="element-{{$index}}">
-        <img ng-src="assets/images/{{g | gestureIcon}}"
-             ng-class="{'gesture-no-mask' : g !== gesture, 'gesture-mask' : g === gesture}"
-             class="gesture-icon"/>
-    </a>
+    <gesture ng-repeat="g in gestures"
+             gesture="g"
+             count="$index"
+             ng-click="pick(g)"
+             highlight="g === gesture"
+            />
 </circle-layout>
-
-

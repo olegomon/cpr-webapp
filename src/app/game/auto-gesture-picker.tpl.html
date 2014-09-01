@@ -1,7 +1,7 @@
 <circle-layout center-icon="'laptop'">
-    <a ng-repeat="gesture in gestures" class="element-{{$index}}">
-        <img ng-src="assets/images/{{gesture | gestureIcon}}"
-             ng-class="{'gesture-no-mask' : mask !== gesture, 'gesture-mask' : mask === gesture}"
-             class="gesture-icon"/>
-    </a>
+    <gesture ng-repeat="gesture in gestures"
+             gesture="gesture"
+             count="$index"
+             highlight="mask === gesture"
+            />
 </circle-layout>

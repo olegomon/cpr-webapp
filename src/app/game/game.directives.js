@@ -1,7 +1,7 @@
 angular.module('cpr.game.directives', [
 ])
 
-    .directive('circleLayout', function() {
+    .directive('circleLayout', function () {
         return {
             restrict   : 'E',
             transclude : true,
@@ -12,10 +12,24 @@ angular.module('cpr.game.directives', [
         };
     })
 
+    .directive('gesture', function () {
+        return {
+            restrict   : 'E',
+            replace    : true,
+            transclude : true,
+            scope      : {
+                count    : '=',
+                gesture  : '=',
+                highlight: '='
+            },
+            templateUrl: 'game/gesture.tpl.html'
+        };
+    })
+
     .directive('gesturePicker', function () {
         return {
             restrict: 'E',
-            scope: {
+            scope   : {
                 gesture: '=',
                 state  : '='
             },
@@ -61,19 +75,19 @@ angular.module('cpr.game.directives', [
                         reveal();
                     }
                     if (state === 'play') {
-                        mask();
-                        play();
+                        randomHighlight();
+                        pick();
                     }
                 });
 
                 var interval;
 
-                function mask() {
+                function randomHighlight() {
                     interval = $interval(function () {
                         var mask = getRandomInt(min, max);
                         // to prevent same random numbers in a row does not look nice on the ui
-                        if(mask === $scope.mask) {
-                            if(mask === max - 1) {
+                        if (mask === $scope.mask) {
+                            if (mask === max - 1) {
                                 mask -= 1;
                             } else {
                                 mask += 1;
@@ -88,7 +102,7 @@ angular.module('cpr.game.directives', [
                     $scope.mask = $scope.gesture;
                 }
 
-                function play() {
+                function pick() {
                     var timeout = getRandomInt(3000, 3000);
                     $interval(function () {
                         $scope.gesture = getRandomInt(min, max);
