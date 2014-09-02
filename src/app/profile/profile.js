@@ -1,21 +1,7 @@
 angular.module('cpr.profile', [
+    'cpr.profile.routings',
     'cpr.profile.services',
     'cpr.profile.controllers'
 ])
-
-    .config(function ($stateProvider) {
-        $stateProvider
-            .state('profile', {
-                url        : '/profile',
-                templateUrl: 'profile/profile.tpl.html',
-                controller : 'ProfileCtrl',
-                resolve: {
-                    user: function(UserService) {
-                        return UserService.loadUser();
-                    }
-                }
-            })
-        ;
-    })
 
 ;

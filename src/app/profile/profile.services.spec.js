@@ -3,12 +3,10 @@ describe('Profile Services', function () {
     beforeEach(module('cpr.profile'));
 
 
+
+
     describe('UserService', function () {
-        var UserService;
-        var $q;
-        var $scope;
-        var $window;
-        var UserStorage;
+        var UserService, $scope, $window, UserStorage;
 
         var user = {
             name : 'user',
@@ -22,8 +20,7 @@ describe('Profile Services', function () {
             $provide.value('UserStorage', UserStorage);
         }));
 
-        beforeEach(inject(function ($rootScope, _$window_, _$q_, _UserService_) {
-            $q = _$q_;
+        beforeEach(inject(function ($rootScope, _$window_, _UserService_) {
             $scope = $rootScope.$new();
             UserService = _UserService_;
             $window = _$window_;
