@@ -16,7 +16,9 @@ angular.module('cpr.game', [
                 controller: 'GameCtrl',
                 resolve: {
                     user: function(UserService) {
-                        return UserService.loadUser();
+                        return UserService.loadUser().then(function(user) {
+                            return user || {};
+                        });
                     }
                 }
             })

@@ -1,0 +1,15 @@
+<div class="score" ng-show="winner">
+    <div class="game-banner animated" ng-class="{'tada': winner}" >
+
+        <div class="col-sm-4 score-field">
+            <gesture highlight="true" gesture="player1.gesture"></gesture>
+        </div>
+        <div class="col-sm-4 score-field">
+            {{winner | winner}}
+        </div>
+        <div class="col-sm-4 score-field">
+            <gesture highlight="true" gesture="player2.gesture"></gesture>
+        </div>
+
+    </div>
+</div>

@@ -1,13 +1,14 @@
 <div class="container game">
-    <div ng-click="close()" class="game-overlay" ng-show="round.winner">
-        <div class="game-banner animated" ng-class="{'tada': round.winner}" >
-            <h3>And the winner is: {{round.winner}}</h3>
-        </div>
-    </div>
-    <div class="col-sm-6 game-field">
+    <score ng-click="close()"
+           winner="round.winner"
+           score="score"
+           player1="player1"
+           player2="player2">
+    </score>
+    <div class="col-sm-6 field-player-1">
         <auto-gesture-picker gesture="player1.gesture" state="state"></auto-gesture-picker>
     </div>
-    <div class="col-sm-6 game-field">
+    <div class="col-sm-6 field-player-2">
         <auto-gesture-picker gesture="player2.gesture" state="state"></auto-gesture-picker>
     </div>
     <div class="col-sm-12">

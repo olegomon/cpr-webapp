@@ -2,9 +2,23 @@ angular.module('cpr.game.filters', [
     'cpr.engine.constants'
 ])
 
+    .filter('winner', function() {
+        return function(winner) {
+            if(winner === 'DRAW') {
+                return 'Draw';
+            } else {
+                return 'Winner: ' + winner;
+            }
+        };
+    })
+
     .filter('gestureIcon', function(gestureFilter) {
         return function(input) {
-            return gestureFilter(input).toLowerCase() + '.svg';
+            if(gestureFilter(input)) {
+                return 'assets/images/' + gestureFilter(input).toLowerCase() + '.svg';
+            } else {
+                return '';
+            }
         };
     })
 

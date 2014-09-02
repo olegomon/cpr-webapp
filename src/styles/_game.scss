@@ -1,46 +1,34 @@
 .game {
 
-  position: relative;
+  $field-height: 20em;
 
+  position: relative;
   padding: 0;
 
-  .game-overlay {
+  text-align: center;
+
+  .score {
     position: absolute;
     height: 100%;
     width: 100%;
-
-    @include display-flex;
-    @include flex-direction(row);
-    @include align-items(center);
-    @include justify-content(center);
-    @include align-content(stretch);
+    @include center-layout();
 
     z-index: 100;
-    opacity: .8;
     background-color: white;
-    .game-banner {
-      opacity: 1;
+
+    .score-field {
+      height: 6em;
+      @include center-layout();
     }
   }
 
-  text-align: center;
-  .game-score {
-    background-color: darkgray;
-  }
+  .field-center {
+    height: $field-height;
 
-  .game-field {
-
-    $field-border: 1px solid #bababa;
-
-    &:first-child {
-      border-right: $field-border;
-    }
+    @include center-layout();
 
     @media (max-width: '768px') {
-      &:first-child {
-        border-right: none;
-        border-bottom: $field-border;
-      }
+      height: initial;
     }
   }
 
@@ -48,8 +36,6 @@
     @include transition-duration(.2s);
     @include transition-timing-function(ease-in);
     @include transition-property(transform);
-
-    $scale-factor: 1.2;
     @include transform(scale(1.2, 1.2));
   }
 
@@ -61,6 +47,70 @@
     @include filter(grayscale(100%));
   }
 
-  .gesture-icon {
+  .circle-container {
+
+    $size: $field-height - 2em;
+    $half-size: $size / 3;
+
+    position: relative;
+    width: $size;
+    height: $size;
+    padding: 1em;
+    margin: auto;
+
+    @include box-sizing(content-box);
+    @include border-radius(50%, 50%);
+
+    .center {
+    }
+
+    a, .center {
+      $width: 5em;
+
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: $width;
+      height: $width;
+      margin: -$width / 2;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    $shift: 90deg;
+    $slice: 360deg / 5;
+
+    @mixin circle-element($translate, $angle) {
+      @include transform(rotate($angle) translate($translate) rotate(-$angle));
+    }
+
+    a:nth-child(1) {
+      $angle: $shift;
+      @include circle-element($half-size, $angle);
+    }
+
+    a:nth-child(2) {
+      $angle: $slice * 1 + $shift;
+      @include circle-element($half-size, $angle);
+    }
+
+    a:nth-child(3) {
+      $angle: $slice * 2 + $shift;
+      @include circle-element($half-size, $angle);
+    }
+
+    a:nth-child(4) {
+      $angle: $slice * 3 + $shift;
+      @include circle-element($half-size, $angle);
+    }
+
+    a:nth-child(5) {
+      $angle: $slice * 4 + $shift;
+      @include circle-element($half-size, $angle);
+    }
   }
 }

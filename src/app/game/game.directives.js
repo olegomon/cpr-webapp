@@ -12,6 +12,20 @@ angular.module('cpr.game.directives', [
         };
     })
 
+    .directive('score', function () {
+        return {
+            restrict   : 'E',
+            replace    : true,
+            scope      : {
+                'winner' : '=',
+                'player1': '=',
+                'player2': '=',
+                'score'  : '='
+            },
+            templateUrl: 'game/score.tpl.html'
+        };
+    })
+
     .directive('gesture', function () {
         return {
             restrict   : 'E',

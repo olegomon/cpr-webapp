@@ -21,11 +21,26 @@ describe('Game Filters', function () {
     describe('gesture icon filter', function () {
 
         it('should return correct file name for a gesture', inject(function (gestureIconFilter, GESTURES) {
-            expect(gestureIconFilter(GESTURES.SCISSORS)).toEqual('scissors.svg');
-            expect(gestureIconFilter(GESTURES.ROCK)).toEqual('rock.svg');
-            expect(gestureIconFilter(GESTURES.PAPER)).toEqual('paper.svg');
-            expect(gestureIconFilter(GESTURES.LIZARD)).toEqual('lizard.svg');
-            expect(gestureIconFilter(GESTURES.SPOCK)).toEqual('spock.svg');
+            expect(gestureIconFilter(GESTURES.SCISSORS)).toEqual('assets/images/scissors.svg');
+            expect(gestureIconFilter(GESTURES.ROCK)).toEqual('assets/images/rock.svg');
+            expect(gestureIconFilter(GESTURES.PAPER)).toEqual('assets/images/paper.svg');
+            expect(gestureIconFilter(GESTURES.LIZARD)).toEqual('assets/images/lizard.svg');
+            expect(gestureIconFilter(GESTURES.SPOCK)).toEqual('assets/images/spock.svg');
+        }));
+
+        it('should return empty string if gesture is not valid', inject(function (gestureIconFilter) {
+            expect(gestureIconFilter(-1)).toEqual('');
+        }));
+    });
+
+    describe('winner filter', function () {
+
+        it('should return winning message with the player name', inject(function (winnerFilter) {
+            expect(winnerFilter('foo')).toEqual('Winner: foo');
+        }));
+
+        it('should return "Draw" message if the result is DRAW', inject(function (winnerFilter) {
+            expect(winnerFilter('DRAW')).toEqual('Draw');
         }));
     });
 });
