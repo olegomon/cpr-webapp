@@ -6,12 +6,20 @@ describe('Game Controllers', function () {
 
     describe('GameCtrl', function () {
 
-        var GESTURES;
+        var GestureType;
+        var PlayerType;
 
-        beforeEach(inject(function($controller, $rootScope, _GESTURES_) {
+        beforeEach(inject(function($controller, $rootScope, _GestureType_, _PlayerType_) {
             $scope = $rootScope.$new();
-            $controller('GameCtrl', {$scope: $scope, user: {} });
-            GESTURES = _GESTURES_;
+
+            GestureType = _GestureType_;
+            PlayerType = _PlayerType_;
+
+            $controller('GameCtrl', {$scope: $scope, user: {
+                name: 'User Player',
+                type: PlayerType.HUMAN
+            }});
+
         }));
 
         it('should init score on the scope', function() {
@@ -22,13 +30,15 @@ describe('Game Controllers', function () {
 
         it('should init player1 on the scope', function() {
             expect($scope.player1).toBeTruthy();
-            expect($scope.player1.name).toBeTruthy();
+            expect($scope.player1.name).toEqual('User Player');
+            expect($scope.player1.type).toEqual(PlayerType.HUMAN);
             expect($scope.player1.gesture).toBe(null);
         });
 
         it('should init player2 on the scope', function() {
             expect($scope.player2).toBeTruthy();
             expect($scope.player2.name).toBeTruthy();
+            expect($scope.player2.type).toEqual(PlayerType.COMPUTER);
             expect($scope.player2.gesture).toBe(null);
         });
 
@@ -36,10 +46,10 @@ describe('Game Controllers', function () {
             expect($scope.state).toBe(null);
         });
 
-        it('play() should reset the gestures and set the state to "play"', function() {
+        it('play() should reset the GestureType and set the state to "play"', function() {
 
-            $scope.player1.gesture = GESTURES.ROCK;
-            $scope.player2.gesture = GESTURES.ROCK;
+            $scope.player1.gesture = GestureType.ROCK;
+            $scope.player2.gesture = GestureType.ROCK;
             $scope.state = 'reveal';
 
             $scope.play();
@@ -56,7 +66,7 @@ describe('Game Controllers', function () {
             expect($scope.round.winner).toBe(null);
         });
 
-        it('valid changes on gestures should update the state', function() {
+        it('valid changes on GestureType should update the state', function() {
 
             spyOn($scope, 'reveal').andCallThrough();
             spyOn($scope, 'isReady').andCallThrough();
@@ -65,7 +75,7 @@ describe('Game Controllers', function () {
             $scope.play();
 
             // player one ready
-            $scope.player1.gesture = GESTURES.ROCK;
+            $scope.player1.gesture = GestureType.ROCK;
 
             // digest to trigger watch listeners
             $scope.$apply();
@@ -74,7 +84,7 @@ describe('Game Controllers', function () {
             expect($scope.isReady).toHaveBeenCalledWith($scope.player1);
 
             // player two ready
-            $scope.player2.gesture = GESTURES.ROCK;
+            $scope.player2.gesture = GestureType.ROCK;
 
             $scope.$apply();
 
@@ -86,7 +96,7 @@ describe('Game Controllers', function () {
             expect($scope.state).toEqual('reveal');
         });
 
-        it('should update the score and winner according to the gestures of the players', function() {
+        it('should update the score and winner according to the GestureType of the players', function() {
 
             expect($scope.score.home).toBe(0);
             expect($scope.score.away).toBe(0);
@@ -95,8 +105,8 @@ describe('Game Controllers', function () {
             $scope.play();
 
             // player 1 must win
-            $scope.player1.gesture = GESTURES.PAPER;
-            $scope.player2.gesture = GESTURES.ROCK;
+            $scope.player1.gesture = GestureType.PAPER;
+            $scope.player2.gesture = GestureType.ROCK;
 
 
             // digest to trigger watch listeners
@@ -110,8 +120,8 @@ describe('Game Controllers', function () {
             $scope.play();
 
             // player 2 must win
-            $scope.player1.gesture = GESTURES.ROCK;
-            $scope.player2.gesture = GESTURES.PAPER;
+            $scope.player1.gesture = GestureType.ROCK;
+            $scope.player2.gesture = GestureType.PAPER;
 
             $scope.$apply();
 
@@ -123,8 +133,8 @@ describe('Game Controllers', function () {
             $scope.play();
 
             // DRAW
-            $scope.player1.gesture = GESTURES.ROCK;
-            $scope.player2.gesture = GESTURES.ROCK;
+            $scope.player1.gesture = GestureType.ROCK;
+            $scope.player2.gesture = GestureType.ROCK;
 
             $scope.$apply();
 

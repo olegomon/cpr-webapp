@@ -7,7 +7,7 @@ angular.module('cpr.game.filters', [
             if(winner === 'DRAW') {
                 return 'Draw';
             } else {
-                return 'Winner: ' + winner;
+                return winner + ' wins';
             }
         };
     })

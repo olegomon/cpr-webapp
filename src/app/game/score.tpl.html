@@ -2,12 +2,14 @@
     <div class="game-banner animated" ng-class="{'tada': winner}" >
 
         <div class="col-sm-4 score-field">
+            <div>{{player1.name}} : {{score.home}}</div>
             <gesture highlight="true" gesture="player1.gesture"></gesture>
         </div>
         <div class="col-sm-4 score-field">
             {{winner | winner}}
         </div>
         <div class="col-sm-4 score-field">
+            <div>{{player2.name}} : {{score.away}}</div>
             <gesture highlight="true" gesture="player2.gesture"></gesture>
         </div>
 

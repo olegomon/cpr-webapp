@@ -1,6 +1,6 @@
 angular.module('cpr.engine.constants', [
 ])
-    .constant('GESTURES', {
+    .constant('GestureType', {
         ROCK    : 0,
         PAPER   : 1,
         SCISSORS: 2,

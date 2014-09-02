@@ -2,7 +2,7 @@ angular.module('cpr.game.controllers', [
     'cpr.engine.services'
 ])
 
-    .controller('GameCtrl', function ($scope, $log, RulesService, user) {
+    .controller('GameCtrl', function ($scope, $log, RulesService, PlayerType, user) {
 
         $scope.state = null;
         $scope.round = {
@@ -10,18 +10,20 @@ angular.module('cpr.game.controllers', [
         };
 
         $scope.player1 = {
-            name   : user.name || 'Player1',
+            name   : user.name || 'Player 1',
+            type   : user.type || PlayerType.COMPUTER,
             gesture: null,
             ready  : false
         };
 
         $scope.player2 = {
-            name   : 'Player2',
+            name   : 'Player 2',
+            type   : PlayerType.COMPUTER,
             gesture: null,
             ready  : false
         };
 
-        $scope.close = function() {
+        $scope.close = function () {
             resetWinner();
         };
 
@@ -55,13 +57,13 @@ angular.module('cpr.game.controllers', [
         }
 
         function updateRound(payoff) {
-            if(payoff.player1) {
+            if (payoff.player1) {
                 $scope.round.winner = $scope.player1.name;
             }
-            if(payoff.player2) {
+            if (payoff.player2) {
                 $scope.round.winner = $scope.player2.name;
             }
-            if(payoff.draw) {
+            if (payoff.draw) {
                 $scope.round.winner = 'DRAW';
             }
 

@@ -5,6 +5,7 @@ angular.module('cpr.game', [
 
     'cpr.game.filters',
     'cpr.game.services',
+    'cpr.game.constants',
     'cpr.game.controllers',
     'cpr.game.directives'
 ])

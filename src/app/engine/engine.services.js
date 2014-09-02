@@ -1,6 +1,6 @@
 angular.module('cpr.engine.services', [
 ])
-    .factory('RulesService', function(GESTURES) {
+    .factory('RulesService', function(GestureType) {
 
         /**
          * The normal form matrix of rock-paper-scissors-lizard-Spock.
@@ -51,8 +51,8 @@ angular.module('cpr.engine.services', [
         }
 
         function getGestures() {
-            return Object.keys(GESTURES).map(function (key) {
-                return GESTURES[key];
+            return Object.keys(GestureType).map(function (key) {
+                return GestureType[key];
             });
         }
 
