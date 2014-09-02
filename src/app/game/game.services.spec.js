@@ -21,6 +21,10 @@ describe('Game Services', function () {
             expect(player.name).toEqual('Player');
             expect(player.type).toEqual(PlayerType.HUMAN);
 
+            player = PlayerFactory.createHumanPlayer();
+            expect(player.name).toEqual('Player');
+            expect(player.type).toEqual(PlayerType.HUMAN);
+
         }));
 
         it('should create computer player', inject(function (PlayerType) {
@@ -31,6 +35,10 @@ describe('Game Services', function () {
             expect(player.type).toEqual(PlayerType.COMPUTER);
 
             player = PlayerFactory.createComputerPlayer({});
+            expect(player.name).toEqual('Computer');
+            expect(player.type).toEqual(PlayerType.COMPUTER);
+
+            player = PlayerFactory.createComputerPlayer(null);
             expect(player.name).toEqual('Computer');
             expect(player.type).toEqual(PlayerType.COMPUTER);
         }));
