@@ -52,8 +52,13 @@ module.exports = function (grunt) {
         'build', 'karma:test'
     ]);
 
-    grunt.registerTask('coverage', 'Run karma unit tests in development environment', [
-        'build', 'karma:coverage'
+    grunt.registerTask('coverage', 'Run karma unit tests in development environment an generage test coverage reports', [
+        'clean:dev',
+        'copy:index',
+        'copy:dev',
+        'html2js',
+        'index:dev',
+        'karma:coverage'
     ]);
 
     grunt.registerTask('build', 'Build the app for development environment', [
