@@ -36,7 +36,7 @@ describe('Game Filters', function () {
     describe('winner filter', function () {
 
         it('should return winning message with the player name', inject(function (winnerFilter) {
-            expect(winnerFilter('foo')).toEqual('foo wins');
+            expect(winnerFilter('foo')).toEqual('foo wins!');
         }));
 
         it('should return "Draw" message if the result is DRAW', inject(function (winnerFilter) {

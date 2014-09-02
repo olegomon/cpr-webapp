@@ -16,9 +16,44 @@
     z-index: 100;
     background-color: white;
 
-    .score-field {
-      height: 6em;
-      @include center-layout();
+    .banner {
+      width: 100%;
+      height: 100%;
+    }
+
+    .score-header {
+      padding: 2em;
+    }
+
+    .score-body {
+
+      .score-number {
+        h1 {
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .score-field {
+        height: 15em;
+
+        @media (min-width: '768px') {
+
+          @include display-flex;
+          @include flex-direction(row);
+          @include align-items(center);
+          @include justify-content(center);
+          @include align-content(stretch);
+
+        }
+        @media (max-width: '768px') {
+          @include display-flex;
+          @include flex-direction(column);
+          @include align-items(center);
+          @include justify-content(center);
+          @include align-content(stretch);
+        }
+      }
     }
   }
 

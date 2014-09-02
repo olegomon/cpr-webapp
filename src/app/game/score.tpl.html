@@ -1,16 +1,32 @@
-<div class="score" ng-show="winner">
-    <div class="game-banner animated" ng-class="{'tada': winner}" >
+<div class="container score" ng-show="winner">
 
-        <div class="col-sm-4 score-field">
-            <div>{{player1.name}} : {{score.home}}</div>
-            <gesture highlight="true" gesture="player1.gesture"></gesture>
+    <div class="banner animated" ng-class="{'tada': winner}">
+
+        <div class="row score-header">
+            <div class="col-sm-12">
+                <h1>{{winner | winner}}</h1>
+            </div>
         </div>
-        <div class="col-sm-4 score-field">
-            {{winner | winner}}
-        </div>
-        <div class="col-sm-4 score-field">
-            <div>{{player2.name}} : {{score.away}}</div>
-            <gesture highlight="true" gesture="player2.gesture"></gesture>
+
+        <div class="row score-body">
+            <div class="col-sm-6 score-field">
+                <div class="col-sm-10 result-gesture">
+                    <gesture class="col-sm-10" class="result-gesture" highlight="true"
+                             gesture="player1.gesture"></gesture>
+                </div>
+                <div class="col-sm-2 score-number">
+                    <h1>{{score.home}}</h1>
+                </div>
+            </div>
+
+            <div class="col-sm-6 score-field">
+                <div class="col-sm-2 score-number">
+                    <h1>{{score.away}}</h1>
+                </div>
+                <div class="col-sm-10 result-gesture">
+                    <gesture highlight="true" gesture="player2.gesture"></gesture>
+                </div>
+            </div>
         </div>
 
     </div>
