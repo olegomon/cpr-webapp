@@ -83,12 +83,6 @@ grunt coverage
 It will generate coverage reports inside the reports folder
 
 
-### To generate coverage reports run:
-
-```shell
-grunt coverage
-```
-
 
 
 ## License
