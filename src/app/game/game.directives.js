@@ -149,7 +149,7 @@ angular.module('cpr.game.directives', [
                  * Start a timeout and assign the gesture when ready to notify the controller about the computers choice
                  */
                 function pick() {
-                    var timeout = getRandomInt(200, 500);
+                    var timeout = getRandomInt(1000, 3000);
                     $interval(function () {
                         $scope.gesture = getRandomInt(min, max);
                     }, timeout, 1);
