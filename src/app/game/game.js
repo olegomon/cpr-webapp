@@ -16,9 +16,11 @@ angular.module('cpr.game', [
                 templateUrl: 'game/game.tpl.html',
                 controller: 'GameCtrl',
                 resolve: {
-                    user: function(UserService) {
+                    user: function(UserService, PlayerType) {
                         return UserService.loadUser().then(function(user) {
-                            return user || {};
+                            user = user || {};
+                            user.type = PlayerType.HUMAN;
+                            return user;
                         });
                     }
                 }
@@ -30,11 +32,13 @@ angular.module('cpr.game', [
         $stateProvider
             .state('demo', {
                 url        : '/demo',
-                templateUrl: 'game/demo.tpl.html',
+                templateUrl: 'game/game.tpl.html',
                 controller: 'GameCtrl',
                 resolve: {
-                    user: function() {
-                        return {};
+                    user: function(PlayerType) {
+                        var user = {};
+                        user.type = PlayerType.COMPUTER;
+                        return user;
                     }
                 }
             })

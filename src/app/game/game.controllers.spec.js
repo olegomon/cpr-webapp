@@ -60,6 +60,13 @@ describe('Game Controllers', function () {
             expect($scope.player2.gesture).toBe(null);
         });
 
+        it('isPlaying() should return true if state is "play"', function() {
+            $scope.state = 'play';
+            expect($scope.isPlaying()).toBe(true);
+            $scope.state = 'foo';
+            expect($scope.isPlaying()).toBe(false);
+        });
+
         it('close() should reset the winner field', function() {
             $scope.round.winner = 'Player 1';
             $scope.close();

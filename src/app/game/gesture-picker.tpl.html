@@ -1,7 +1,4 @@
-<circle-layout center-icon="'user'">
-    <gesture ng-repeat="g in gestures"
-             gesture="g"
-             ng-click="pick(g)"
-             highlight="g === gesture"
-            ></gesture>
-</circle-layout>
+<div>
+    <user-gesture-picker ng-if="isHuman(player)" gesture="player.gesture" state="state"></user-gesture-picker>
+    <auto-gesture-picker ng-if="isComputer(player)" gesture="player.gesture" state="state"></auto-gesture-picker>
+</div>

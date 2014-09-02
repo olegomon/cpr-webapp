@@ -44,11 +44,32 @@ angular.module('cpr.game.directives', [
         return {
             restrict: 'E',
             scope   : {
+                player: '=',
+                state: '='
+            },
+            replace: true,
+            templateUrl: 'game/gesture-picker.tpl.html',
+            controller: function ($scope, PlayerType) {
+                $scope.isComputer = function(player) {
+                    return player.type === PlayerType.COMPUTER;
+                };
+
+                $scope.isHuman = function(player) {
+                    return player.type === PlayerType.HUMAN;
+                };
+            }
+        };
+    })
+
+    .directive('userGesturePicker', function () {
+        return {
+            restrict: 'E',
+            scope   : {
                 gesture: '=',
                 state  : '='
             },
 
-            templateUrl: 'game/gesture-picker.tpl.html',
+            templateUrl: 'game/user-gesture-picker.tpl.html',
 
             controller: function ($scope, RulesService) {
                 $scope.pick = function (gesture) {
