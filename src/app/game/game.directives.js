@@ -18,8 +18,8 @@ angular.module('cpr.game.directives', [
             replace    : true,
             scope      : {
                 'winner' : '=',
-                'player1': '=',
-                'player2': '=',
+                'player1': '=playerOne',
+                'player2': '=playerTwo',
                 'score'  : '='
             },
             templateUrl: 'game/score.tpl.html'
@@ -42,19 +42,19 @@ angular.module('cpr.game.directives', [
 
     .directive('gesturePicker', function () {
         return {
-            restrict: 'E',
-            scope   : {
+            restrict   : 'E',
+            scope      : {
                 player: '=',
-                state: '='
+                state : '='
             },
-            replace: true,
+            replace    : true,
             templateUrl: 'game/gesture-picker.tpl.html',
-            controller: function ($scope, PlayerType) {
-                $scope.isComputer = function(player) {
+            controller : function ($scope, PlayerType) {
+                $scope.isComputer = function (player) {
                     return player.type === PlayerType.COMPUTER;
                 };
 
-                $scope.isHuman = function(player) {
+                $scope.isHuman = function (player) {
                     return player.type === PlayerType.HUMAN;
                 };
             }
@@ -98,7 +98,7 @@ angular.module('cpr.game.directives', [
                 var min = 0;
                 var max = $scope.gestures.length;
 
-                $scope.mask = "";
+                $scope.mask = '';
 
                 // Returns a random integer between min (included) and max (excluded)
                 function getRandomInt(min, max) {
@@ -117,10 +117,15 @@ angular.module('cpr.game.directives', [
 
                 var interval;
 
+
+                /**
+                 * Randomly highlight gestures
+                 */
                 function randomHighlight() {
                     interval = $interval(function () {
                         var mask = getRandomInt(min, max);
                         // to prevent same random numbers in a row does not look nice on the ui
+                        // when the same number gets picked in a row
                         if (mask === $scope.mask) {
                             if (mask === max - 1) {
                                 mask -= 1;
@@ -132,11 +137,17 @@ angular.module('cpr.game.directives', [
                     }, 200);
                 }
 
+                /**
+                 * Stops the random highlighting and shows the real value of the computer
+                 */
                 function reveal() {
                     $interval.cancel(interval);
                     $scope.mask = $scope.gesture;
                 }
 
+                /**
+                 * Start a timeout and assign the gesture when ready to notify the controller about the computers choice
+                 */
                 function pick() {
                     var timeout = getRandomInt(3000, 3000);
                     $interval(function () {
