@@ -50,7 +50,7 @@ To execute the tests in dev mode run
 ```shell
 grunt test
 ```
-It will build the app and run the tests against the minified version of the app and all vendor files.
+It will build the app and run the tests against the unmodified sources of the app and all vendor files.
 
  
 ### Grunt default
@@ -63,15 +63,13 @@ grunt
 It will build the app and run the tests against the minified version of the app and all vendor files.
 
 
-### Grunt default
+### Grunt show
 
 To make a distribution build and show in the browser run 
 
 ```shell
 grunt show
 ```
-It will build the app and run the tests against the minified version of the app and all vendor files.
-
 
 
 ### To generate coverage reports run:
